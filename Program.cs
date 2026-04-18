@@ -94,6 +94,6 @@ app.MapPut("/clientes/{id}", (int id, Cliente cliente) =>
     
 });
 
-
-app.Run();
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5174";
+app.Run($"http://0.0.0.0:{port}");
 record Cliente(string nome, string telefone, string endereco);
