@@ -58,3 +58,4 @@ C:\Users\dinen\Documents\SistemaManutencao\SistemaManutencaoAPI\obj\Debug\net8.0
 C:\Users\dinen\Documents\SistemaManutencao\SistemaManutencaoAPI\obj\Debug\net8.0\SistemaManutencaoAPI.pdb
 C:\Users\dinen\Documents\SistemaManutencao\SistemaManutencaoAPI\obj\Debug\net8.0\SistemaManutencaoAPI.genruntimeconfig.cache
 C:\Users\dinen\Documents\SistemaManutencao\SistemaManutencaoAPI\obj\Debug\net8.0\ref\SistemaManutencaoAPI.dll
+C:\Users\dinen\documents\SistemaManutencao\SistemaManutencaoAPI\obj\Debug\net8.0\SistemaManutencaoAPI.sourcelink.json

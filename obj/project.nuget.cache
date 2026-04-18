@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+mbDS4CziSyRl6fRyTq5ZOmxjONgAYf1EpooIC2fDdl5rKVCEEuRlRvexOKNpo/o8PPkDye3lw4DBjusg4cxGQ==",
+  "dgSpecHash": "2+4goly3KyFroxhcreNR11fNCANZ872S/M4hUmzccn3QHMcmthsMd1Pt6iEi1ZntJkPes/vgSg5BLRsI8Mrl+Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dinen\\documents\\SistemaManutencao\\SistemaManutencaoAPI\\SistemaManutencaoAPI.csproj",
+  "projectFilePath": "C:\\Users\\dinen\\Documents\\SistemaManutencao\\SistemaManutencaoAPI\\SistemaManutencaoAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dinen\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.6\\microsoft.aspnetcore.openapi.8.0.6.nupkg.sha512",
     "C:\\Users\\dinen\\.nuget\\packages\\microsoft.data.sqlite\\10.0.5\\microsoft.data.sqlite.10.0.5.nupkg.sha512",

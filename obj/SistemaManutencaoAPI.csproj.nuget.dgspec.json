@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dinen\\documents\\SistemaManutencao\\SistemaManutencaoAPI\\SistemaManutencaoAPI.csproj": {}
+    "C:\\Users\\dinen\\Documents\\SistemaManutencao\\SistemaManutencaoAPI\\SistemaManutencaoAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dinen\\documents\\SistemaManutencao\\SistemaManutencaoAPI\\SistemaManutencaoAPI.csproj": {
+    "C:\\Users\\dinen\\Documents\\SistemaManutencao\\SistemaManutencaoAPI\\SistemaManutencaoAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dinen\\documents\\SistemaManutencao\\SistemaManutencaoAPI\\SistemaManutencaoAPI.csproj",
+        "projectUniqueName": "C:\\Users\\dinen\\Documents\\SistemaManutencao\\SistemaManutencaoAPI\\SistemaManutencaoAPI.csproj",
         "projectName": "SistemaManutencaoAPI",
-        "projectPath": "C:\\Users\\dinen\\documents\\SistemaManutencao\\SistemaManutencaoAPI\\SistemaManutencaoAPI.csproj",
+        "projectPath": "C:\\Users\\dinen\\Documents\\SistemaManutencao\\SistemaManutencaoAPI\\SistemaManutencaoAPI.csproj",
         "packagesPath": "C:\\Users\\dinen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dinen\\documents\\SistemaManutencao\\SistemaManutencaoAPI\\obj\\",
+        "outputPath": "C:\\Users\\dinen\\Documents\\SistemaManutencao\\SistemaManutencaoAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dinen\\AppData\\Roaming\\NuGet\\NuGet.Config"
