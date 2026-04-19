@@ -8,7 +8,7 @@ var app = builder.Build();
 app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 
-string bancoDados = "Host=roundhouse.proxy.rlwy.net;Port=25886;Database=railway;Username=postgres;Password=YWRTDWmEsnFFBwKzSMYDIQYDOiLzAKLV;SSL Mode=Require;Trust Server Certificate=true";
+string bancoDados = "Host=aws-1-us-west-2.pooler.supabase.com;Port=5432;Database=postgres;Username=postgres.xgrvegqbctqqpnsebgha;Password=JCSempre1919;SSL Mode=Require;Trust Server Certificate=true";
 
 using (var conn = new NpgsqlConnection(bancoDados))
 {
@@ -84,7 +84,7 @@ app.MapPut("/clientes/{id}", (int id, Cliente cliente) =>
     using var connection = new NpgsqlConnection(bancoDados);
     connection.Open();
     var cmd = connection.CreateCommand();
-    cmd.CommandText = "UPDATE Clientes SET nome=$nome, telefone=$telefone, endereco=$endereco WHERE id=@id";
+    cmd.CommandText = "UPDATE Clientes SET nome=@nome, telefone=@telefone, endereco=@endereco WHERE id=@id";
     cmd.Parameters.AddWithValue("@nome", cliente.nome);
     cmd.Parameters.AddWithValue("@telefone", cliente.telefone);
     cmd.Parameters.AddWithValue("@endereco", cliente.endereco);
