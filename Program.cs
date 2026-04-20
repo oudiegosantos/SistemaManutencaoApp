@@ -1,3 +1,7 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
 using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +28,97 @@ tabClientes.CommandText = @"
 )";
 tabClientes.ExecuteNonQuery();
 }
+
+// TABELA DE USUARIOS
+
+using (var conn = new NpgsqlConnection(bancoDados))
+{
+    conn.Open();
+    var tabUsuarios = conn.CreateCommand();
+    tabUsuarios.CommandText = @"CREATE TABLE IF NOT EXISTS Usuarios (
+        id SERIAL PRIMARY KEY,
+        nome TEXT NOT NULL,
+        email TEXT NOT NULL UNIQUE,
+        senha TEXT NOT NULL,
+        perfil TEXT NOT NULL DEFAULT 'usuario'
+    )";
+    tabUsuarios.ExecuteNonQuery();
+}
+
+
+// REGISTAR USUÁRIO 
+app.MapPost("auth/registrar", (Usuario usuario) =>
+{
+    using var conn = new NpgsqlConnection(bancoDados);
+    conn.Open();
+
+    var vExistUser = conn.CreateCommand();
+    vExistUser.CommandText = "SELECT COUNT(*) FROM Usuarios WHERE email=@email";
+    vExistUser.Parameters.AddWithValue("@email", usuario.email);
+    long vExist = (long)(vExistUser.ExecuteScalar() ?? 0L);
+    if (vExist > 0) return Results.BadRequest("Usuário já existente!");
+
+    string passowrdCripto = BCrypt.Net.BCrypt.HashPassword(usuario.senha);
+
+    var cmd = conn.CreateCommand();
+    cmd.CommandText = "INSERT INTO Usuarios(nome, email, senha, perfil) VALUES(@nome, @email, @senha, @perfil)";
+    cmd.Parameters.AddWithValue("@nome", usuario.nome);
+    cmd.Parameters.AddWithValue("@email", usuario.email);
+    cmd.Parameters.AddWithValue("@senha", passowrdCripto);
+    cmd.Parameters.AddWithValue("@perfil", usuario.perfil);
+
+    cmd.ExecuteNonQuery();
+    return Results.Ok("Usuário cadastrado!");
+
+});
+
+// LOGIN USUARIO
+
+app.MapPost("auth/login", (Login login) =>
+{
+    using var conn = new NpgsqlConnection(bancoDados);
+    conn.Open();
+
+    var cmd = conn.CreateCommand();
+    cmd.CommandText = "SELECT id, nome, email, senha, perfil FROM Usuarios WHERE email = @email";
+    cmd.Parameters.AddWithValue("@email", login.email);
+    var len = cmd.ExecuteReader();
+
+    if(!len.Read())
+    return Results.Unauthorized();
+
+    string passData = len.GetString(3);
+    if(!BCrypt.Net.BCrypt.Verify(login.senha, passData))
+    return Results.Unauthorized();
+
+    int id = len.GetInt32(0);
+    string nome = len.GetString(1);
+    string perfil = len.GetString(4);
+
+    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("metalurgica-montenegro-chave-secreta-2026"));
+    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+    var claims = new[]
+    {
+        new Claim("id", id.ToString()),
+        new Claim("nome", nome),
+        new Claim("perfil", perfil)
+
+    };
+
+    var token = new JwtSecurityToken(
+
+        expires: DateTime.UtcNow.AddHours(8),
+        signingCredentials: creds,
+        claims: claims
+    );
+
+    string tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+
+    return Results.Ok(new {token = tokenString, nome, perfil});
+
+});
+
+
 
 // LISTAR CLIENTES
 app.MapGet("/clientes", () =>
@@ -96,4 +191,7 @@ app.MapPut("/clientes/{id}", (int id, Cliente cliente) =>
 
 var port = Environment.GetEnvironmentVariable("PORT") ?? "5174";
 app.Run($"http://0.0.0.0:{port}");
+
+record Usuario(string nome, string email, string senha, string perfil);
+record Login(string email, string senha);
 record Cliente(string nome, string telefone, string endereco);

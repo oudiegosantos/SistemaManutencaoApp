@@ -70,3 +70,9 @@ C:\Users\dinen\Documents\SistemaManutencao\SistemaManutencaoAPI\bin\Debug\net8.0
 C:\Users\dinen\Documents\SistemaManutencao\SistemaManutencaoAPI\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 C:\Users\dinen\Documents\SistemaManutencao\SistemaManutencaoAPI\bin\Debug\net8.0\Npgsql.dll
 C:\Users\dinen\Documents\SistemaManutencao\SistemaManutencaoAPI\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\dinen\Documents\SistemaManutencao\SistemaManutencaoAPI\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\dinen\Documents\SistemaManutencao\SistemaManutencaoAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\dinen\Documents\SistemaManutencao\SistemaManutencaoAPI\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\dinen\Documents\SistemaManutencao\SistemaManutencaoAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\dinen\Documents\SistemaManutencao\SistemaManutencaoAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\dinen\Documents\SistemaManutencao\SistemaManutencaoAPI\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
